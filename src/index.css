@@ -1,0 +1,24 @@
+@import 'themes.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  font-family: var(--font-family);
+  transition: background-color 0.2s ease;
+}
+
+body {
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+#root {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+}
