@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import type { IconType } from "react-icons";
 import { NavLink } from "react-router-dom";
 import "./SidebarButton.css";
+import { useSelectedTabProvider } from "../../../context/MenuContext";
 
 interface MenuButtonProps {
     icon: IconType;
@@ -11,10 +12,17 @@ interface MenuButtonProps {
 }
 
 function MenuButton({ icon: Icon, link, label, isActive }: MenuButtonProps) {
-    const [chosen, setChosen] = useState(false);
+    const [selectedTab, setSelectedTab] = useSelectedTabProvider();
+
+    const isSelected = selectedTab == label;
+    console.log('upp', isActive);
+    const handleClick = () => {
+        setSelectedTab(label);
+        console.log('Текущая вкладка:', label);
+    };
     return (
         <div className="menu-item">
-            <NavLink to={link} className={({ isActive }) => `menu-item ${isActive ? 'active' : ''} ${chosen ? 'chosen' : ''}`} onClick={() => setChosen(true)}>
+            <NavLink to={link} className={({ isActive }) => `menu-item ${isActive ? 'active' : ''} ${isSelected ? 'isSelected' : ''}`} onClick={handleClick}>
                 {<Icon />}
                 {isActive && <span className="label">{label}</span>}
             </NavLink>
@@ -23,4 +31,4 @@ function MenuButton({ icon: Icon, link, label, isActive }: MenuButtonProps) {
     );
 }
 
-export default MenuButton;
+export default MenuButton; 

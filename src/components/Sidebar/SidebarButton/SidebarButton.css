@@ -1,0 +1,29 @@
+/* Базовые стили */
+.menu-item {
+    text-align: center;
+    font-size: x-large;
+    padding: 10%;
+    text-decoration: none;
+    
+}
+
+/* Только isSelected */
+.menu-item.isSelected {
+    border: solid;
+    border-radius: 10%;
+}
+
+/* Только active */
+.menu-item.active {}
+
+/* Если active И isSelected - переопределяем нужные свойства */
+.menu-item.active.isSelected {
+    border-radius: 2%;
+    /* color: black */
+    /* или 10% - что важнее */
+}
+
+.menu-item:hover {
+    color: var(--text-hover);
+
+}
