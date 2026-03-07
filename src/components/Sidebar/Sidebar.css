@@ -7,7 +7,7 @@
     height: 100%;
     width: 80px;
     /* свернутое состояние */
-    background-color: #f0f0f0;
+    background-color: var(--sidebar-bg);
     /* border-right: 1px solid #ccc; */
     transition: width 0.3s ease;
     overflow: hidden;

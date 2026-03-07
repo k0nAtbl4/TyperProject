@@ -1,4 +1,5 @@
 import './App.css'
+import './themes.css'
 import { Routes, Route, Link } from 'react-router-dom'
 import LevelPage from './pages/LevelPage/LevelPage'
 import NotFound from './pages/NotFoundPage/NotFoundPage'

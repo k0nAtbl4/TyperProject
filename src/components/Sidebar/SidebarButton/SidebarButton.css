@@ -1,29 +1,35 @@
 /* Базовые стили */
 .menu-item {
-    text-align: center;
+
+    /* text-align: center; */
     font-size: x-large;
-    padding: 10%;
+    padding: 14px;
     text-decoration: none;
-    
+    color: var(--text-primary);
+    transition: var(--transition);
 }
 
 /* Только isSelected */
 .menu-item.isSelected {
-    border: solid;
-    border-radius: 10%;
+    /* border: 2px solid ; */
+    border-radius: 20%;
 }
 
-/* Только active */
-.menu-item.active {}
+.menu-item.active {
+    width: 40px;
+}
 
-/* Если active И isSelected - переопределяем нужные свойства */
+
+
 .menu-item.active.isSelected {
-    border-radius: 2%;
-    /* color: black */
-    /* или 10% - что важнее */
+    border-radius: 20%;
+    width: 60px;
+    background-color: var(--border);
+    color: var(--text-color);
 }
+
+
 
 .menu-item:hover {
     color: var(--text-hover);
-
 }

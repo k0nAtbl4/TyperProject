@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 
 const SettingsPage = () => {
 
-    
-    
+
+
     return (
         <div>
             
