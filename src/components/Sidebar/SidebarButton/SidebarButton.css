@@ -1,7 +1,6 @@
-/* Базовые стили */
 .menu-item {
 
-    /* text-align: center; */
+
     font-size: x-large;
     padding: 14px;
     text-decoration: none;
@@ -9,21 +8,16 @@
     transition: var(--transition);
 }
 
-/* Только isSelected */
+
+
 .menu-item.isSelected {
-    /* border: 2px solid ; */
-    border-radius: 20%;
+    background-color: var(--border);
+    color: var(--text-color);
+    border-radius: 8px;
 }
 
-.menu-item.active {
-    width: 40px;
-}
-
-
-
-.menu-item.active.isSelected {
-    border-radius: 20%;
-    width: 60px;
+.menu-item.isSelected.active {
+    border-radius: 8px;
     background-color: var(--border);
     color: var(--text-color);
 }

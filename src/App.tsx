@@ -6,6 +6,7 @@ import NotFound from './pages/NotFoundPage/NotFoundPage'
 import HomePage from './pages/HomePage/HomePage'
 import Sidebar from './components/Sidebar/Sidebar'
 import SettingsPage from './pages/SettingPage/SettingPage'
+import LevelListPage from './pages/LevelsListPage/LevelsListPage'
 function App() {
 
 
@@ -15,6 +16,7 @@ function App() {
         <Sidebar/>
         <Routes>
           <Route path="/" element={< HomePage />} />
+          <Route path="/levels" element={< LevelListPage />} />
           <Route path="/level/:levelId" element={< LevelPage />} />
           <Route path="/settings" element={< SettingsPage />} />
           <Route path='*' element={< NotFound />} />

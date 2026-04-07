@@ -15,14 +15,13 @@ function MenuButton({ icon: Icon, link, label, isActive }: MenuButtonProps) {
     const [selectedTab, setSelectedTab] = useSelectedTabProvider();
 
     const isSelected = selectedTab == label;
-    console.log('upp', isActive);
+    console.log('label: ', label, `menu-item ${isActive ? 'active' : ''} ${isSelected ? 'isSelected' : ''}`);
     const handleClick = () => {
         setSelectedTab(label);
-        console.log('Текущая вкладка:', label);
     };
     return (
         <div className="menu-item">
-            <NavLink to={link} className={({ isActive }) => `menu-item ${isActive ? 'active' : ''} ${isSelected ? 'isSelected' : ''}`} onClick={handleClick}>
+            <NavLink to={link} className={() => `menu-item ${isActive ? 'active' : ''} ${isSelected ? 'isSelected' : ''}`} onClick={handleClick}>
                 {<Icon />}
                 {isActive && <span className="label">{label}</span>}
             </NavLink>

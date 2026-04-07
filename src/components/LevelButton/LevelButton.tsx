@@ -1,18 +1,19 @@
-import React, { useState } from "react";
-import type { IconType } from "react-icons";
-import { NavLink } from "react-router-dom";
-import "./SidebarButton.css";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./LevelButton.css";
 
-interface LevelButtonProps {
+interface LevelCardButtonProps {
     id: number;
-    
 }
 
-function MenuButton({ }: LevelButtonProps) {
+function LevelCardButton({ id }: LevelCardButtonProps) {
+    const navigate = useNavigate();
+
     return (
-        <div>
+        <div className="level-button" onClick={() => navigate(`/level/${id}`)}>
+            <span className="text">{id}</span>
         </div>
     );
 }
 
-export default MenuButton; 
+export default LevelCardButton;
