@@ -9,7 +9,7 @@ type TextWriterProps = {
     text: string
     level?: number
 }
-function TextWriter(props: TextWriterProps) {
+function TextWriter2(props: TextWriterProps) {
     const [inputText, setInputText] = useState('');
     const [startTime, setStartTime] = useState(0);
     const [currTime, setCurrTime] = useState(0);
@@ -134,4 +134,4 @@ function TextWriter(props: TextWriterProps) {
 }
 
 
-export default TextWriter;
+export default TextWriter2;

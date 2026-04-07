@@ -1,9 +1,5 @@
-.homePageText{
-    text-align: center;
-    font-size: xx-large;
-    text-shadow: rgb(255, 208, 0) 2px 2px;
-}
-.mainContainer{
+.main-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }

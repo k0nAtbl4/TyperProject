@@ -1,17 +1,15 @@
-import { useParams } from "react-router-dom";
 import LevelCardButton from "../../components/LevelButton/LevelButton";
+import { levels_data } from "../../levels_data";
 import "./LevelsListPage.css";
 
 
 const LevelListPage = () => {
 
-
-    
     return (
         <div className="main-container">
-            <LevelCardButton id={0}></LevelCardButton>
-            <LevelCardButton id={1}></LevelCardButton>
-            <LevelCardButton id={2}></LevelCardButton>
+            {levels_data.map(level => (
+                <LevelCardButton key={level.id} id={level.id}></LevelCardButton>
+            ))}
         </div>
     )
 }

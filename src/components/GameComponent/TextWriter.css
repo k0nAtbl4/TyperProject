@@ -1,0 +1,30 @@
+.key-display {
+  /* padding: 10rem 16rem; */
+  padding-top: 10%;
+  border-radius: 1rem;
+  z-index: 9999;
+  max-width: 70%;
+  /* padding-left: 5rem;
+  padding-right: 5rem; */
+}
+
+.key-display__text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: black;
+  word-wrap: break-word;
+  word-break: break-word;
+  text-align: justify;
+}
+
+.green-char {
+  color: green;
+}
+
+.red-char {
+  color: red;
+}
+
+.gray-char {
+  color: gray;
+}

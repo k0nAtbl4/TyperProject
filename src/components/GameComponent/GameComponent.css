@@ -8,7 +8,7 @@
 
 }
 .inputTextToWrite{
-    
+    visibility: hidden;
 }
 .wpm{
     color: red;

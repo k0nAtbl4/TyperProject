@@ -1,15 +1,13 @@
 
 import './HomePage.css';
+import { TextWriter } from '../../components/GameComponent/TextWriter';
 
 const HomePage = () => {
+    const fullText = "a a a a a a a b b b b b b ba ba ab a a ba bab a bba a a ba a b ab a ba b a ba ab a";
+
     return (
-        <div className="mainContainer">
-            <div className="homePageText">
-                <h1>oo</h1>
-            </div>
-            <div className="levelsList">
-                
-            </div>
+        <div className="main-container">
+            <TextWriter text={fullText} />
         </div>
     )
 }

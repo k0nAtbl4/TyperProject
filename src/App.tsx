@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage/HomePage'
 import Sidebar from './components/Sidebar/Sidebar'
 import SettingsPage from './pages/SettingPage/SettingPage'
 import LevelListPage from './pages/LevelsListPage/LevelsListPage'
+import AboutPage from './pages/AboutPage/AboutPage'
 function App() {
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/levels" element={< LevelListPage />} />
           <Route path="/level/:levelId" element={< LevelPage />} />
           <Route path="/settings" element={< SettingsPage />} />
+          <Route path="/about" element={< AboutPage />} />
           <Route path='*' element={< NotFound />} />
         </Routes>
       </div>

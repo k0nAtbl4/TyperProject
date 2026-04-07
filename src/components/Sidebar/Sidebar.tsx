@@ -24,7 +24,7 @@ const Sidebar: React.FC = () => {
                     <nav className='navContainer'>
                         <MenuButton icon={HiHome} link={'/'} label={'Home'} isActive={isHovered} />
                         <MenuButton icon={BsListCheck} link={'/levels'} label={'Levels'} isActive={isHovered} />
-                        <MenuButton icon={MdOutlineQuestionMark} link={'/b'} label={'About'} isActive={isHovered} />
+                        <MenuButton icon={MdOutlineQuestionMark} link={'/about'} label={'About'} isActive={isHovered} />
                         <MenuButton icon={SlSettings} link={'/settings'} label={'Settings'} isActive={isHovered} />
                         {/* <h1>
                             {isHovered ? 't' : 'f'}
