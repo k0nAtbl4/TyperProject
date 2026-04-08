@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Vite + React 19 + TypeScript project using React Compiler for performance optimization. Features CSS-based theming with CSS variables and React Router v7 for navigation.
+**TypeFlow** — a modern typing trainer to improve typing speed and accuracy. Features real-time feedback, multiple difficulty levels, WPM tracking, and light/dark/system theme support.
 
 ## Commands
 
@@ -15,6 +15,20 @@ npm run lint       # Run ESLint
 npm run preview    # Preview production build
 ```
 
+## Docker
+
+```bash
+# Build
+docker build -t type-test .
+
+# Tag & Push
+docker tag type-test username/type-test:latest
+docker push username/type-test:latest
+
+# Run on server
+docker run -d -p 80:80 --name type-test username/type-test:latest
+```
+
 ## Architecture
 
 - **Router**: React Router v7 (BrowserRouter). Routes defined in [App.tsx](src/App.tsx)
@@ -23,17 +37,24 @@ npm run preview    # Preview production build
 
 ### Page Structure
 
-| Route | Component |
-|-------|-----------|
-| `/` | HomePage |
-| `/levels` | LevelListPage |
-| `/level/:levelId` | LevelPage |
-| `/settings` | SettingsPage |
+| Route | Component | Description |
+|-------|-----------|-------------|
+| `/` | HomePage | Welcome page with instructions and "Try Random Text" button |
+| `/levels` | LevelListPage | List of all typing levels |
+| `/level/:levelId` | LevelPage | TextWriter with selected level text |
+| `/settings` | SettingsPage | App settings and theme switcher |
+| `/about` | AboutPage | About the project |
 
 ### Contexts
 
-- [ThemeContext](src/context/ThemeContext.tsx) — theme switching via CSS variables
+- [ThemeContext](src/context/ThemeContext.tsx) — theme switching (light/dark/system) via CSS variables
 - [MenuContext](src/context/MenuContext.tsx) — sidebar menu state
+
+### Key Files
+
+- [levels_data.ts](src/levels_data.ts) — all typing levels with text and difficulty
+- [TextWriter.tsx](src/components/GameComponent/TextWriter.tsx) — main typing game component
+- [Sidebar.tsx](src/components/Sidebar/Sidebar.tsx) — navigation sidebar
 
 ## Tech Stack
 
@@ -41,3 +62,5 @@ npm run preview    # Preview production build
 - TypeScript with strict mode (tsconfig.app.json)
 - ESLint flat config with typescript-eslint
 - Vite 8 (beta)
+- React Router v7
+- React Icons (Feather Icons)

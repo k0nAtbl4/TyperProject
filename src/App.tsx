@@ -8,6 +8,7 @@ import Sidebar from './components/Sidebar/Sidebar'
 import SettingsPage from './pages/SettingPage/SettingPage'
 import LevelListPage from './pages/LevelsListPage/LevelsListPage'
 import AboutPage from './pages/AboutPage/AboutPage'
+import StatisticsPage from './pages/StatisticsPage/StatisticsPage'
 function App() {
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/level/:levelId" element={< LevelPage />} />
           <Route path="/settings" element={< SettingsPage />} />
           <Route path="/about" element={< AboutPage />} />
+          <Route path="/statistics" element={< StatisticsPage />} />
           <Route path='*' element={< NotFound />} />
         </Routes>
       </div>

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
 import MenuButton from './SidebarButton/SidebarButton';
-import { FiHome, FiBook, FiInfo, FiSettings } from 'react-icons/fi';
+import { FiHome, FiBook, FiInfo, FiSettings, FiTrendingUp } from 'react-icons/fi';
 import { SelectedTabProvider } from '../../context/MenuContext';
 import SwitchThemeButton from '../ThemeSwitch/ThemeSwitch';
 
@@ -21,6 +21,7 @@ const Sidebar: React.FC = () => {
                         <MenuButton icon={FiHome} link={'/'} label={'Home'} isActive={isHovered} />
                         <MenuButton icon={FiBook} link={'/levels'} label={'Levels'} isActive={isHovered} />
                         <MenuButton icon={FiInfo} link={'/about'} label={'About'} isActive={isHovered} />
+                        <MenuButton icon={FiTrendingUp} link={'/statistics'} label={'Statistics'} isActive={isHovered} />
                         <MenuButton icon={FiSettings} link={'/settings'} label={'Settings'} isActive={isHovered} />
                     </nav>
                     <div className='theme-container'>

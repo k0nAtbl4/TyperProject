@@ -1,4 +1,4 @@
-import { FaPalette, FaKeyboard, FaTachometerAlt } from 'react-icons/fa';
+import { FaPalette, FaKeyboard } from 'react-icons/fa';
 import SwitchThemeButton from '../../components/ThemeSwitch/ThemeSwitch';
 import './SettingPage.css';
 
@@ -36,23 +36,6 @@ const SettingsPage = () => {
                     </div>
                     <div className="settings-option">
                         <span>Show Keystrokes</span>
-                        <span className="settings-badge">Coming Soon</span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="settings-section">
-                <div className="settings-card">
-                    <div className="settings-card-header">
-                        <FaTachometerAlt className="settings-card-icon" />
-                        <h2>Statistics</h2>
-                    </div>
-                    <div className="settings-option">
-                        <span>Track Progress</span>
-                        <span className="settings-badge">Coming Soon</span>
-                    </div>
-                    <div className="settings-option">
-                        <span>Reset Statistics</span>
                         <span className="settings-badge">Coming Soon</span>
                     </div>
                 </div>
