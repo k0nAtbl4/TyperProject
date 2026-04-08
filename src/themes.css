@@ -1,22 +1,25 @@
-:root {
-    --primary: #2563EB;            /* синий для акцентов */
-    --sidebar-bg: #F8FAFC;         /* очень светлый серый для сайдбара */
-    --background: #FFFFFF;         /* чистый белый для контента */
-    --text-primary: #1E293B;       /* темно-серый для текста */
-    --text-secondary: #64748B;     /* серый для второстепенного текста */
-    --border: #E2E8F0;             /* цвет границ */
-    --hover: #F1F5F9;              /* ховер для пунктов меню */
-    --accent: #3B82F6;             /* яркий синий для кнопок */
+html.light {
+    --sidebar-bg: #F8FAFC;
+    --background: #FFFFFF;
+    --text-primary: #1E293B;
+    --text-secondary: #64748B;
+    --border: #E2E8F0;
+    --hover: #F1F5F9;
+    --accent: #667eea;
 }
 
-[data-theme='dark'] {
-    --background-color: #0c0c1a;
-    /* midnight */
-    --text-color: #e0e0e0;
-    --primary-color: #4b0082;
-    /* indigo */
-    --secondary-color: #1a1a2e;
-    /* dark blue */
-    --accent-color: #00ffff;
-    /* a contrasting accent for dark mode */
+html.dark {
+    --sidebar-bg: #1a1a2e;
+    --background: #0c0c1a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border: #2d2d4a;
+    --hover: #3d3d5a;
+    --accent: #764ba2;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }

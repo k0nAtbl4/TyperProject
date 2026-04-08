@@ -1,30 +1,43 @@
 import { useState, useEffect, useRef } from 'react';
 import './TextWriter.css';
 
-
-
-
-
-
 type TextWriterProps = {
     text: string
     level?: number
 }
 
-
-
 export function TextWriter(props: TextWriterProps) {
     const [pressedKey, setPressedKey] = useState<string | null>(null);
-    const [isFocus, setIsFocus] = useState(true);
     const [currentInput, setCurrentInput] = useState<string[]>([]);
+    const [wrongLanguage, setWrongLanguage] = useState(false);
+    const [isFinished, setIsFinished] = useState(false);
+    const [wpm, setWpm] = useState(0);
+    const startTimeRef = useRef<number | null>(null);
     const ref = useRef<HTMLDivElement>(null);
+
+    const calculateWpm = (chars: number, timeMs: number) => {
+        const minutes = timeMs / 60000;
+        const words = chars / 5;
+        return Math.round(words / minutes);
+    };
+
+    const handleWin = () => {
+        if (startTimeRef.current) {
+            const elapsed = Date.now() - startTimeRef.current;
+            const result = calculateWpm(props.text.length, elapsed);
+            setWpm(result);
+            setIsFinished(true);
+        }
+    };
 
     useEffect(() => {
         let shiftHeld = false;
 
         const handleKeyDown = (e: KeyboardEvent) => {
+            if (isFinished) return;
+
             setPressedKey(e.key);
-            console.log(currentInput.join(''));
+
             if (e.key === 'Shift') {
                 shiftHeld = true;
                 return;
@@ -38,26 +51,31 @@ export function TextWriter(props: TextWriterProps) {
                 setCurrentInput(prev => [...prev, '_']);
                 return;
             }
-            if (isFocus && /^[a-zA-Z]$/.test(e.key)) {
+            if (/^[a-zA-Z]$/.test(e.key)) {
+                setWrongLanguage(false);
                 const char = shiftHeld ? e.key.toUpperCase() : e.key;
-                setCurrentInput(prev => [...prev, char]);
+                setCurrentInput(prev => {
+                    const newInput = [...prev, char];
+                    if (newInput.length === 1) {
+                        startTimeRef.current = Date.now();
+                    }
+                    if (newInput.length === props.text.length) {
+                        setTimeout(handleWin, 0);
+                    }
+                    return newInput;
+                });
                 shiftHeld = false;
-            }
-        };
-
-        const handleClickOutside = (e: MouseEvent) => {
-            if (ref.current && !ref.current.contains(e.target as Node)) {
-                setIsFocus(false);
+            } else if (e.key.length === 1 && !/^[a-zA-Z]$/.test(e.key)) {
+                setWrongLanguage(true);
             }
         };
 
         window.addEventListener('keydown', handleKeyDown);
-        document.addEventListener('mousedown', handleClickOutside);
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
-            document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
+    }, [isFinished]);
+
     const renderResult = () => {
         const result = [];
         for (let i = 0; i < props.text.length; i++) {
@@ -75,15 +93,17 @@ export function TextWriter(props: TextWriterProps) {
     }
 
     return (
-        <div className="key-display" ref={ref} onClick={() => setIsFocus(true)}>
+        <div className="key-display" ref={ref}>
             <span className="key-display__text">
-                {
-                    isFocus ? renderResult() : "Click to focus"
-                }
+                {renderResult()}
             </span>
-            <h1>
-                {currentInput.join('')}
-            </h1>
+            {wrongLanguage && <h1 className="wrong-language">Wrong language!</h1>}
+            {isFinished && (
+                <div className="win-screen">
+                    <h2 className="win-title">Finished!</h2>
+                    <p className="win-wpm">{wpm} WPM</p>
+                </div>
+            )}
         </div>
     );
 }

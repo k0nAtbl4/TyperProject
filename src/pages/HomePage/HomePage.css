@@ -3,3 +3,91 @@
     flex-direction: column;
     align-items: center;
 }
+
+.homepage-info {
+    text-align: center;
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.homepage-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.homepage-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.homepage-instructions {
+    background: var(--hover);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.homepage-instructions h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.homepage-instructions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.homepage-instructions li {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.homepage-instructions li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.homepage-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.homepage-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.homepage-back-button {
+    background: var(--hover);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background 0.2s ease;
+}
+
+.homepage-back-button:hover {
+    background: var(--border);
+}

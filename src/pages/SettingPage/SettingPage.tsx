@@ -1,35 +1,61 @@
-import { useState, useEffect } from 'react';
-import { FaCog } from 'react-icons/fa';
+import { FaPalette, FaKeyboard, FaTachometerAlt } from 'react-icons/fa';
+import SwitchThemeButton from '../../components/ThemeSwitch/ThemeSwitch';
 import './SettingPage.css';
 
 const SettingsPage = () => {
-    const [progress, setProgress] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setProgress(prev => prev < 100 ? prev + 1 : 0);
-        }, 50);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
         <div className="settings-container">
-            <div className="settings-card">
-                <FaCog className="settings-icon spinning" />
-                <h1 className="settings-title">IN PROGRESS</h1>
-                <p className="settings-subtitle">Settings page is under development</p>
+            <h1 className="settings-title">Settings</h1>
 
-                <div className="progress-container">
-                    <div className="progress-bar">
-                        <div
-                            className="progress-fill"
-                            style={{ width: `${progress}%` }}
-                        />
+            <div className="settings-section">
+                <div className="settings-card">
+                    <div className="settings-card-header">
+                        <FaPalette className="settings-card-icon" />
+                        <h2>Appearance</h2>
                     </div>
-                    <span className="progress-text">{progress}%</span>
+                    <div className="settings-option">
+                        <span>Theme</span>
+                        <SwitchThemeButton />
+                    </div>
+                    <div className="settings-option">
+                        <span>Accent Color</span>
+                        <span className="settings-badge">Coming Soon</span>
+                    </div>
                 </div>
+            </div>
 
-                <p className="settings-hint">Coming soon...</p>
+            <div className="settings-section">
+                <div className="settings-card">
+                    <div className="settings-card-header">
+                        <FaKeyboard className="settings-card-icon" />
+                        <h2>Typing</h2>
+                    </div>
+                    <div className="settings-option">
+                        <span>Sound Effects</span>
+                        <span className="settings-badge">Coming Soon</span>
+                    </div>
+                    <div className="settings-option">
+                        <span>Show Keystrokes</span>
+                        <span className="settings-badge">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="settings-section">
+                <div className="settings-card">
+                    <div className="settings-card-header">
+                        <FaTachometerAlt className="settings-card-icon" />
+                        <h2>Statistics</h2>
+                    </div>
+                    <div className="settings-option">
+                        <span>Track Progress</span>
+                        <span className="settings-badge">Coming Soon</span>
+                    </div>
+                    <div className="settings-option">
+                        <span>Reset Statistics</span>
+                        <span className="settings-badge">Coming Soon</span>
+                    </div>
+                </div>
             </div>
         </div>
     )

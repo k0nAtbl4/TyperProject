@@ -1,30 +1,36 @@
 // SwitchThemeButton.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import './ThemeSwitch.css';
+import { useTheme } from '../../context/ThemeContext';
 
-
-interface SwitchThemeButtonProps {
-    is_active: boolean
-}
-
-
-const SwitchThemeButton: React.FC<SwitchThemeButtonProps> = ({is_active}) => {
-    const [isDark, setIsDark] = useState(false);
+const SwitchThemeButton: React.FC = () => {
+    const { theme, setTheme } = useTheme();
 
     const toggleTheme = () => {
-        setIsDark(!isDark);
-        document.body.classList.toggle('dark-theme');
+        if (theme === 'light') {
+            setTheme('dark');
+        } else if (theme === 'dark') {
+            setTheme('system');
+        } else {
+            setTheme('light');
+        }
+    };
+
+    const getIcon = () => {
+        if (theme === 'light') return '☀️';
+        if (theme === 'dark') return '🌙';
+        return '💻';
     };
 
     return (
         <button
-            className={`theme-switch ${isDark ? 'dark' : 'light'}`}
+            className={`theme-switch ${theme}`}
             onClick={toggleTheme}
             aria-label="Switch theme"
         >
             <div className="slider">
                 <div className="icon">
-                    {isDark ? '🌙' : '☀️'}
+                    {getIcon()}
                 </div>
             </div>
         </button>

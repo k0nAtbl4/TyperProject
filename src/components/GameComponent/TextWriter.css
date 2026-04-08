@@ -1,5 +1,6 @@
 .key-display {
   /* padding: 10rem 16rem; */
+  text-align: center;
   padding-top: 10%;
   border-radius: 1rem;
   z-index: 9999;
@@ -17,6 +18,13 @@
   text-align: justify;
 }
 
+.wrong-language{
+  text-align: center;
+  padding: 20px;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
 .green-char {
   color: green;
 }
@@ -27,4 +35,41 @@
 
 .gray-char {
   color: gray;
+}
+
+.win-screen {
+    margin-top: 2rem;
+    background: linear-gradient(145deg, #ffffff, #f5f5f5);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.win-title {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.win-wpm {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #333;
 }
