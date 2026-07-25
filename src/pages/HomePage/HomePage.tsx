@@ -2,16 +2,23 @@
 import { useState } from 'react';
 import './HomePage.css';
 import { TextWriter } from '../../components/GameComponent/TextWriter';
-import { levels_data } from '../../levels_data';
+import { api } from '../../api/api';
 
 const HomePage = () => {
     const [showWriter, setShowWriter] = useState(false);
     const [randomText, setRandomText] = useState('');
 
-    const playRandom = () => {
-        const randomLevel = levels_data[Math.floor(Math.random() * levels_data.length)];
-        setRandomText(randomLevel.text);
-        setShowWriter(true);
+    const playRandom = async () => {
+        try {
+            const tasks = await api.getTasks();
+            if (tasks.length > 0) {
+                const randomTask = tasks[Math.floor(Math.random() * tasks.length)];
+                setRandomText(randomTask.text);
+                setShowWriter(true);
+            }
+        } catch (e) {
+            console.error('Failed to load tasks:', e);
+        }
     };
 
     return (

@@ -1,0 +1,117 @@
+{
+  "name": "Typer Backend API",
+  "version": "1.0.0",
+  "baseUrl": "http://localhost:8080",
+  "endpoints": {
+    "health": {
+      "method": "GET",
+      "path": "/health",
+      "description": "Health check endpoint",
+      "response": {
+        "status": "ok"
+      }
+    },
+    "tasks": {
+      "getAll": {
+        "method": "GET",
+        "path": "/tasks",
+        "description": "Get all typing practice tasks",
+        "response": [
+          {
+            "id": 1,
+            "text": "Practice text here..."
+          }
+        ]
+      },
+      "create": {
+        "method": "POST",
+        "path": "/tasks",
+        "description": "Create a new typing task",
+        "request": {
+          "text": "Task text for typing practice"
+        },
+        "response": {
+          "id": 1,
+          "text": "Task text for typing practice"
+        }
+      }
+    },
+    "games": {
+      "create": {
+        "method": "POST",
+        "path": "/games",
+        "description": "Save a completed game session",
+        "request": {
+          "task_id": 1,
+          "user_id": 1,
+          "wpm": 75.5,
+          "accuracy": 98.2,
+          "time": 60000,
+          "game_time": 45000
+        },
+        "validation": {
+          "task_id": "must exist in database",
+          "user_id": "required, positive integer",
+          "wpm": "0-500",
+          "accuracy": "0-100",
+          "time": "0-86400000 (milliseconds, max 24h)",
+          "game_time": "0-86400000 (milliseconds, active typing time)"
+        },
+        "response": {
+          "id": 1,
+          "task_id": 1,
+          "user_id": 1,
+          "wpm": 75.5,
+          "accuracy": 98.2,
+          "time": 60000,
+          "game_time": 45000
+        }
+      },
+      "getByUser": {
+        "method": "GET",
+        "path": "/games?user_id={id}",
+        "description": "Get all games for a specific user",
+        "queryParams": {
+          "user_id": "User ID (required)"
+        },
+        "response": [
+          {
+            "id": 1,
+            "task_id": 1,
+            "user_id": 1,
+            "wpm": 75.5,
+            "accuracy": 98.2,
+            "time": 60000,
+            "game_time": 45000
+          }
+        ]
+      }
+    }
+  },
+  "models": {
+    "Task": {
+      "id": "integer (auto-increment)",
+      "text": "string (typing text)"
+    },
+    "Game": {
+      "id": "integer (auto-increment)",
+      "task_id": "integer (FK to Task)",
+      "user_id": "integer",
+      "wpm": "float (words per minute, 0-500)",
+      "accuracy": "float (percentage, 0-100)",
+      "time": "integer (total time in ms)",
+      "game_time": "integer (active typing time in ms)"
+    }
+  },
+  "cors": {
+    "allowedOrigins": ["*"],
+    "allowedMethods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "allowedHeaders": ["Content-Type", "X-Request-ID"]
+  },
+  "errorResponses": {
+    "400": "Bad Request - Invalid input or validation failed",
+    "404": "Not Found",
+    "405": "Method Not Allowed",
+    "500": "Internal Server Error"
+  }
+}

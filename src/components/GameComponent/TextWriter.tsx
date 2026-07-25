@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import './TextWriter.css';
 import { useStatistics } from '../../context/StatisticsContext';
+import { useCompletedLevels } from '../../context/CompletedLevelsContext';
+import { api } from '../../api/api';
 
 type TextWriterProps = {
     text: string
@@ -18,6 +20,7 @@ export function TextWriter(props: TextWriterProps) {
     const winHandledRef = useRef(false);
     const ref = useRef<HTMLDivElement>(null);
     const { addStat, stats } = useStatistics();
+    const { markCompleted } = useCompletedLevels();
 
     const calculateWpm = (chars: number, timeMs: number) => {
         const minutes = timeMs / 60000;
@@ -46,6 +49,17 @@ export function TextWriter(props: TextWriterProps) {
             setWpm(wpmResult);
             setAccuracy(accuracyResult);
             addStat(wpmResult, accuracyResult);
+            if (props.level !== undefined) {
+                markCompleted(props.level);
+                api.saveGame({
+                    task_id: props.level,
+                    user_id: 1,
+                    wpm: wpmResult,
+                    accuracy: accuracyResult,
+                    time: elapsed,
+                    game_time: elapsed,
+                }).catch(console.error);
+            }
             setIsFinished(true);
         }
     };

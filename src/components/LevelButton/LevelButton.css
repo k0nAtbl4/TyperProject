@@ -35,3 +35,24 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
+.level-button.completed {
+    background: var(--completed-bg, #e8f5e9);
+    border-color: var(--completed-border, #4caf50);
+}
+
+.level-button.completed:hover {
+    background: var(--hover);
+}
+
+.completed-badge {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    color: var(--completed-border, #4caf50);
+    font-size: 1.2rem;
+}
+
+.level-button {
+    position: relative;
+}

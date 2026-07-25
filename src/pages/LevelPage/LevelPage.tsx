@@ -1,17 +1,32 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { TextWriter } from "../../components/GameComponent/TextWriter";
-import { levels_data } from "../../levels_data";
+import { api } from "../../api/api";
 
 
 const LevelPage = () => {
+    const { levelId } = useParams();
+    const [text, setText] = useState<string>("Loading...");
+    const [error, setError] = useState(false);
 
-    const { levelId } = useParams()
-    const level = levels_data.find(l => l.id === Number(levelId));
-    const text = level?.text ?? "Level not found";
+    useEffect(() => {
+        const id = Number(levelId);
+        if (isNaN(id)) {
+            setError(true);
+            return;
+        }
+        api.getTask(id)
+            .then(task => setText(task.text))
+            .catch(() => setError(true));
+    }, [levelId]);
 
     return (
         <div className="main-container">
-            <TextWriter text={text}/>
+            {error ? (
+                <TextWriter text="Level not found" />
+            ) : (
+                <TextWriter text={text} level={Number(levelId)} />
+            )}
         </div>
     )
 }

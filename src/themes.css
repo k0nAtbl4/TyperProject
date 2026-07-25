@@ -6,6 +6,10 @@ html.light {
     --border: #E2E8F0;
     --hover: #F1F5F9;
     --accent: #667eea;
+    --surface: linear-gradient(145deg, #ffffff, #f5f5f5);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --completed-bg: #e8f5e9;
+    --completed-border: #4caf50;
 }
 
 html.dark {
@@ -16,6 +20,10 @@ html.dark {
     --border: #2d2d4a;
     --hover: #3d3d5a;
     --accent: #764ba2;
+    --surface: linear-gradient(145deg, #1a1a2e, #0c0c1a);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --completed-bg: #1b3d1b;
+    --completed-border: #66bb6a;
 }
 
 body {

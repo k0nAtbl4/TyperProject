@@ -4,14 +4,17 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
 import { ThemeProvider } from './context/ThemeContext'
 import { StatisticsProvider } from './context/StatisticsContext'
+import { CompletedLevelsProvider } from './context/CompletedLevelsContext'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider>
       <StatisticsProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <CompletedLevelsProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </CompletedLevelsProvider>
       </StatisticsProvider>
     </ThemeProvider>
   </StrictMode>,
